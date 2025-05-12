@@ -3,13 +3,18 @@ import { HydratedDocument } from 'mongoose';
 
 export type QuestionDocument = HydratedDocument<Question>;
 
-@Schema()
+@Schema({
+  timestamps: true, // 记录时间戳
+})
 export class Question {
   @Prop({ required: true })
   title: string;
 
   @Prop()
   desc: string;
+
+  @Prop()
+  author?: string;
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);

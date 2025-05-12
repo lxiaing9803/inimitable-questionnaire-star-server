@@ -9,10 +9,11 @@ export class QuestionService {
     // 依赖注入
     @InjectModel(Question.name) private readonly questionModel: Model<Question>,
   ) {}
-  async create() {
+  async create(username: string) {
     const question = new this.questionModel({
       title: 'title' + Date.now(),
       desc: 'desc',
+      author: username,
     });
     return await question.save();
   }

@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Query,
+  Request,
 } from '@nestjs/common';
 import { QuestionDto } from './dto/question.dto';
 import { QuestionService } from './question.service';
@@ -15,8 +16,9 @@ import { QuestionService } from './question.service';
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
   @Post()
-  create() {
-    return this.questionService.create();
+  create(@Request() req) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    return this.questionService.create(req.user.username as string);
   }
   @Get()
   async findAll(
