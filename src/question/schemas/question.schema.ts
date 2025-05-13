@@ -11,7 +11,33 @@ export class Question {
   title: string;
 
   @Prop()
-  desc: string;
+  desc?: string;
+
+  @Prop()
+  js?: string;
+
+  @Prop()
+  css?: string;
+
+  @Prop({ default: false })
+  isPublished?: boolean;
+
+  @Prop({ default: false })
+  isStar?: boolean;
+
+  @Prop({ default: false })
+  isDeleted?: boolean;
+
+  @Prop()
+  componentList: {
+    /** 组件id，前端生成 */
+    fe_id: string;
+    type: string;
+    title: string;
+    isHidden: boolean;
+    isLocked: boolean;
+    props: object;
+  }[];
 
   @Prop()
   author?: string;

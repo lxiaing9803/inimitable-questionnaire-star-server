@@ -14,6 +14,7 @@ import { Public } from 'src/auth/decorators/public.decorator';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+  @Public()
   @Post('register')
   async register(@Body() userDto: CreateUserDto) {
     try {
